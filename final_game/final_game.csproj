@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Assets\scripts\EnemyAI.cs" />
     <Compile Include="Assets\scripts\LevelProgression.cs" />
+    <Compile Include="Assets\scripts\PlayerDeath.cs" />
     <Compile Include="Assets\scripts\characterController.cs" />
     <Compile Include="Assets\scripts\mov_platforms.cs" />
   </ItemGroup>
