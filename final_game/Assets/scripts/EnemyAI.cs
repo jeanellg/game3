@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour {
 
     private bool landed = false;
-    private Vector3 platform;
+    private Vector2 platform;
     private int direction = 3;
 
 	// Use this for initialization
@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour {
 
 		if (landed == true)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(3 * direction, 0));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(45 * direction, 0));
         }
 	}
 
