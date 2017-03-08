@@ -5,13 +5,13 @@ using UnityEngine;
 public class characterController : MonoBehaviour {
 
     public float speed = 8.0f;
-    public float jump = 100f;
+    public float jump = 300f;
     private bool grounded;
-    public Rigidbody rbody;
+    public Rigidbody2D rbody;
 
     void Start()
     {
-        rbody = GetComponent<Rigidbody>();
+        rbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()

@@ -88,7 +88,7 @@ public class mov_platforms : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
 		{
 			touching = true;
 		}
@@ -97,7 +97,7 @@ public class mov_platforms : MonoBehaviour {
 
 	void OnCollisionExit(Collision collision)
 	{
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
 		{
 			touching = false;
 		}
