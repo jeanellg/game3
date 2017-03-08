@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelProgression : MonoBehaviour {
-    private static int level = 0;
-    private bool finish = false;
+    private static int level;
+    public bool finish = false;
 
 	// Use this for initialization
 	void Start () {
-		
+		level = SceneManager.GetActiveScene ().buildIndex;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +23,7 @@ public class LevelProgression : MonoBehaviour {
         }
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "Player")
         {

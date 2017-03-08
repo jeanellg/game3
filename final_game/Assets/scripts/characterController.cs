@@ -7,11 +7,11 @@ public class characterController : MonoBehaviour {
     public float speed = 8.0f;
     public float jump = 100f;
     private bool grounded;
-    public Rigidbody2D rbody;
+    public Rigidbody rbody;
 
     void Start()
     {
-        rbody = GetComponent<Rigidbody2D>();
+        rbody = GetComponent<Rigidbody>();
     }
 
     void Update()
