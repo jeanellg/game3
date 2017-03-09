@@ -18,8 +18,6 @@ public class characterController : MonoBehaviour {
 
     void Update()
     {
-        if (grounded == false && rbody.velocity.y == 0f)
-            grounded = true;
         if (stunned == false)
         {
             float horizontal = Input.GetAxis("Horizontal") * speed;
@@ -51,6 +49,8 @@ public class characterController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
             stunned = true;
+        else
+            grounded = true;
     }
 
     void OnCollisionExit2D(Collision2D collision)
