@@ -20,6 +20,7 @@ public class mov_2dplatforms : MonoBehaviour {
 		draggingItem = false;
 		touching = false;
 		originalPosition = this.transform.position;
+		this.GetComponent<Renderer> ().material.color = Color.white;
 	}
 
 	// Update is called once per frame
@@ -50,7 +51,8 @@ public class mov_2dplatforms : MonoBehaviour {
 		if (draggingItem)
 		{
 			this.transform.position = inputPoint + touchOffset;
-	//		Cursor.visible = false;
+			Cursor.visible = false;
+			this.GetComponent<Renderer> ().material.color = Color.yellow;
 
 			if (xOff > 2) {
 				drop_item ();
@@ -79,6 +81,7 @@ public class mov_2dplatforms : MonoBehaviour {
 
 	void drop_item ()
 	{
+		this.GetComponent<Renderer> ().material.color = Color.white;
 		draggingItem = false;
 	}
 
