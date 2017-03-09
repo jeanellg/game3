@@ -42,6 +42,8 @@ public class characterController : MonoBehaviour {
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
+            if (stunned)
+                stunned = false;
         }
     }
 
