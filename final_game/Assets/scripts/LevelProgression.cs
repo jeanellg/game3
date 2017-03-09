@@ -9,7 +9,7 @@ public class LevelProgression : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		level = SceneManager.GetActiveScene ().buildIndex;
+		level = SceneManager.GetActiveScene().buildIndex;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +23,7 @@ public class LevelProgression : MonoBehaviour {
         }
 	}
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
