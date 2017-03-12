@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
-    private float speed = 7;
-    private float hbound = 3;
+    private float speed = 8;
+    private float hbound = 2.6f;
     private float vbound = 2.5f;
-    private float offset = 7.5f;
+    private float offset = 8f;
     public float xpos;
     public float ypos;
     private GameObject player;
     private Vector3 temp;
+    private bool moving;
 
 
 	// Use this for initialization
 	void Start () {
+        moving = false;
         player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
@@ -30,13 +32,23 @@ public class CameraMovement : MonoBehaviour {
         else
             ypos = transform.position.y - player.transform.position.y;
 
-        if (xpos >= hbound || ypos >= vbound)
+        if ((xpos - offset) >= hbound || ypos >= vbound)
+        {
+            moving = true;
+        }
+
+
+        if (moving)
         {
             temp = player.transform.position;
             temp.z = -10;
             temp.x += offset;
 
             transform.position = Vector3.MoveTowards(transform.position, temp, speed * Time.deltaTime);
-        }
+            if(transform.position == temp)
+            {
+                moving = false;
+            }
+        } 
     }
 }

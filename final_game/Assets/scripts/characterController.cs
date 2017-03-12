@@ -18,6 +18,7 @@ public class characterController : MonoBehaviour {
 
     void Update()
     {
+
         if (stunned == false)
         {
             float horizontal = Input.GetAxis("Horizontal") * speed;
@@ -30,6 +31,12 @@ public class characterController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
             {
                 rbody.AddForce(transform.up * jump);
+
+                if (rbody.velocity.y > 1.5f)
+                {
+                    rbody.velocity = new Vector2(1, 1.5f);
+                }
+
                 grounded = false;
             }
 
@@ -49,7 +56,9 @@ public class characterController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
             stunned = true;
-        else
+        else if (collision.gameObject.tag == "Platform")
+            grounded = true;
+        else if (rbody.velocity.y == 0)
             grounded = true;
     }
 
