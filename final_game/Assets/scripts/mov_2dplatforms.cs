@@ -13,6 +13,7 @@ public class mov_2dplatforms : MonoBehaviour {
     private Vector2 limits_x;
     private Vector2 limits_y;
     public bool touching;
+    public bool able;
     private float xOff;
     private float yOff;
 
@@ -32,6 +33,7 @@ public class mov_2dplatforms : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        able = GetComponentInParent<platforms>().moving;
         currentTouchPosition = Input.mousePosition;
         if (Input.GetMouseButtonDown(0))
             hasInput = true;
@@ -41,12 +43,16 @@ public class mov_2dplatforms : MonoBehaviour {
             Cursor.visible = true;
         }
 
-        if (hasInput && !touching)
-            drag_or_pickup();
+        if (hasInput && (!touching) && (able || draggingItem))
+        {
+            drag_or_pickup(); ;
+        }
         else
         {
             if (draggingItem)
+            {
                 drop_item();
+            }
         }
         xOff = Mathf.Abs(transform.position.x - originalPosition.x);
         yOff = Mathf.Abs(transform.position.y - originalPosition.y);
@@ -86,6 +92,7 @@ public class mov_2dplatforms : MonoBehaviour {
             if (hit.collider != null && GetComponent<Collider2D>() == hit.collider)
             {
                 draggingItem = true;
+                GetComponentInParent<platforms>().moving = false;
                 touchOffset = (Vector2)transform.position - inputPoint;
             }
         }
@@ -95,6 +102,7 @@ public class mov_2dplatforms : MonoBehaviour {
     {
         this.GetComponent<Renderer>().material.color = Color.white;
         draggingItem = false;
+        GetComponentInParent<platforms>().moving = true;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
