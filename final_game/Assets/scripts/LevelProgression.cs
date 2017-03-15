@@ -17,9 +17,7 @@ public class LevelProgression : MonoBehaviour {
 		if (finish)
         {
             level++;
-            print(level);
-            SceneManager.LoadScene("level " + level);
-            finish = false;
+            SceneManager.LoadScene(level);
         }
 	}
 
@@ -34,6 +32,6 @@ public class LevelProgression : MonoBehaviour {
     void setLevel(int num)
     {
         level = num;
-        SceneManager.LoadScene("level " + level);
+        SceneManager.LoadScene(level);
     }
 }

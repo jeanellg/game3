@@ -6,12 +6,14 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour {
 
     GameObject pauseMenu;
+    GameObject restart_button;
     bool paused;
     // Use this for initialization
     void Start()
     {
         paused = false;
         pauseMenu = GameObject.Find("pauseMenu");
+        restart_button = GameObject.Find("restart_button");
 
 
     }
@@ -26,11 +28,13 @@ public class PauseScript : MonoBehaviour {
         if (paused)
         {
             pauseMenu.SetActive(true);
+            restart_button.SetActive(false);
             Time.timeScale = 0;
         }
         else if (!paused)
         {
             pauseMenu.SetActive(false);
+            restart_button.SetActive(true);
             Time.timeScale = 1;
         }
     }
