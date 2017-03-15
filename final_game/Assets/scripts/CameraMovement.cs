@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour {
     private float speed = 8;
     private float hbound = 2.6f;
-    private float vbound = 2.5f;
+    private float vbound = 3f;
     private float offset = 8f;
     public float xpos;
     public float ypos;
