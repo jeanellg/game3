@@ -10,6 +10,7 @@ public class CameraMovement : MonoBehaviour {
     public float xpos;
     public float ypos;
     private GameObject player;
+    private Rigidbody2D rbody;
     private Vector3 temp;
     private bool moving;
 
@@ -18,10 +19,17 @@ public class CameraMovement : MonoBehaviour {
 	void Start () {
         moving = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        rbody = player.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (rbody.velocity.y <= -3f)
+            speed = 15;
+        else
+            speed = 8;
+
+
         if(player.transform.position.x > transform.position.x)
             xpos = player.transform.position.x - transform.position.x;
         else
