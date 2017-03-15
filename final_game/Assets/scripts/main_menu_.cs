@@ -17,6 +17,7 @@ public class main_menu_ : MonoBehaviour {
 
     public void Start_button()
     {
+<<<<<<< HEAD
         SceneManager.LoadScene(2);
     }
 
@@ -33,5 +34,8 @@ public class main_menu_ : MonoBehaviour {
     public void quit()
     {
         Application.Quit();
+=======
+        SceneManager.LoadScene("level 0");
+>>>>>>> 7e43273e7090bda3c15249c461a7bd10690e675b
     }
 }
