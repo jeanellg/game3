@@ -17,6 +17,21 @@ public class main_menu_ : MonoBehaviour {
 
     public void Start_button()
     {
-        SceneManager.LoadScene("level 0");
+        SceneManager.LoadScene(2);
+    }
+
+    public void back_to_main()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void instructions()
+    {
+        SceneManager.LoadScene(1);
+    }
+    
+    public void quit()
+    {
+        Application.Quit();
     }
 }
