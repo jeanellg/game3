@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class characterController : MonoBehaviour {
-
+	public AudioClip attackSound;
+	public AudioClip jumpSound;
     public float speed = 8.0f;
     public float jump = 300f;
     private bool grounded;
@@ -30,6 +31,7 @@ public class characterController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
             {
+				this.GetComponent<AudioSource> ().PlayOneShot (jumpSound);
                 rbody.AddForce(transform.up * jump);
 
                 if (rbody.velocity.y > 1.5f)
@@ -46,6 +48,7 @@ public class characterController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
+			this.GetComponent<AudioSource> ().PlayOneShot (attackSound);
             Destroy(collision.gameObject);
             if (stunned)
                 stunned = false;

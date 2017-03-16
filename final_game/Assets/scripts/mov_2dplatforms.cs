@@ -91,6 +91,7 @@ public class mov_2dplatforms : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast((Vector2)Camera.main.ScreenToWorldPoint(currentTouchPosition), Vector2.zero);
             if (hit.collider != null && GetComponent<Collider2D>() == hit.collider)
             {
+				this.GetComponent<AudioSource> ().Play ();
                 draggingItem = true;
                 GetComponentInParent<platforms>().moving = false;
                 touchOffset = (Vector2)transform.position - inputPoint;

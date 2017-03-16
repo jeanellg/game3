@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelProgression : MonoBehaviour {
+	private GameObject player;
     private static int level;
     public bool finish = false;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.FindGameObjectWithTag ("Player");
 		level = SceneManager.GetActiveScene().buildIndex;
 	}
 	
@@ -16,8 +18,9 @@ public class LevelProgression : MonoBehaviour {
 	void Update () {
 		if (finish)
         {
-            level++;
-            SceneManager.LoadScene(level);
+         //   level++;
+			player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+			Invoke( "finishLevel", .45f);
         }
 	}
 
@@ -25,9 +28,15 @@ public class LevelProgression : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
+			this.GetComponent<AudioSource> ().Play ();
             finish = true;
         }
     }
+
+	void finishLevel(){
+		level++;
+		SceneManager.LoadScene(level);
+	}
 
     void setLevel(int num)
     {
